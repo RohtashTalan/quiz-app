@@ -1,0 +1,120 @@
+{
+    "heading": "Assessment 1: Software Engineering",
+    "mcqs": [
+      {
+        "question": "Q1: Software is defined as ___________",
+        "image": "",
+        "choices": [
+          "set of programs, documentation & configuration of data",
+          "set of programs",
+          "documentation and configuration of data",
+          "None of the mentioned"
+        ],
+        "correct": "set of programs, documentation & configuration of data",
+        "explanation": "Software is a collection of programmes; it also includes documentation and data setup to enable the programmes to function. Microsoft windows, excel, word, powerpoint, etc. are a few examples of soft"
+      },
+      {
+        "question": "Q2: What is Software Engineering?",
+        "image": "",
+        "choices": [
+          "Designing a software",
+          "Testing a software",
+          "Application of engineering principles to the design a software",
+          "None of the above"
+        ],
+        "correct": "Application of engineering principles to the design a software",
+        "explanation": "Software engineering is the application of engineering principles to the design, development, and support of software and it helps to solve the challenges of low-quality software projects."
+      },
+      {
+        "question": "Q3: Who is the father of Software Engineering?",
+        "image": "",
+        "choices": [
+          "Margaret Hamilton",
+          "Watts S. Humphrey",
+          "Alan Turing",
+          "Boris Beizer"
+        ],
+        "correct": "Watts S. Humphrey",
+        "explanation": "Watts S. Humphrey created the Software Process Program at Carnegie Mellon University’s Institute (SEI) in the 1980s, and served as its director from 1986 through the early 1990s. This program was designed to help participants understand and manage the software developement process."
+      },
+      {
+        "question": "Q4: What are the features of Software Code?",
+        "image": "",
+        "choices": [
+          "Simplicity",
+          "Accessibility",
+          "Modularity",
+          "All of the above"
+        ],
+        "correct": "Modularity",
+        "explanation": "Software code should be written in a clear, succinct, and easy-to-understand way. Simplicity should be preserved in the program code’s organization, implementation, and design. These codes should be constructed in such a way that software components (such as files and functions) are readily available. The software may be broken down into numerous parts to make it easier to comprehend and troubleshoot."
+      },
+      {
+        "question": "Q5: ____________ is a software development activity that is not a part of software processes.",
+        "image": "",
+        "choices": ["Validation", "Specification", "Development", "Dependence"],
+        "correct": "Dependence",
+        "explanation": "A software dependency is an external independent library that can range in size from a single file to numerous files and directories arranged into packages to accomplish a specified purpose and is an attribute and not an engineering activity for process."
+      },
+      {
+        "question": "Q6: Define Agile scrum methodology.",
+        "image": "",
+        "choices": [
+          "project management that emphasizes incremental progress",
+          "project management that emphasizes decremental progress",
+          "project management that emphasizes neutral progress",
+          "project management that emphasizes no progress"
+        ],
+        "correct": "project management that emphasizes incremental progress",
+        "explanation": "Agile scrum methodology is a style of project management that emphasizes incremental progress. Each iteration is divided into two to four-week sprints, with the goal of completing the most important features first and delivering a possibly deliverable product at the end of each sprint."
+      },
+      {
+        "question": "Q7: CASE stands for",
+        "image": "",
+        "choices": [
+          "Computer-Aided Software Engineering",
+          "Control Aided Science and Engineering",
+          "Cost Aided System Experiments",
+          "None of the mentioned"
+        ],
+        "correct": "Computer-Aided Software Engineering",
+        "explanation": "The CASE tool’s purpose is to make the work of software development and maintenance easier and more reliable."
+      },
+      {
+        "question": "Q8: ________ is defined as the process of generating analysis and designing documents?",
+        "image": "",
+        "choices": [
+          "Re-engineering",
+          "Reverse engineering",
+          "Software re-engineering",
+          "Science and engineering"
+        ],
+        "correct": "Reverse engineering",
+        "explanation": "The method of reverse engineering is used to uncover difficult, unknown, and hidden information about a software system."
+      },
+      {
+        "question": "Q9: The activity that distributes estimated effort across the planned project duration by allocating the effort to specific software developing tasks is ____________",
+        "image": "",
+        "choices": [
+          "Project scheduling",
+          "Detailed schedule",
+          "Macroscopic schedule",
+          "None of the mentioned"
+        ],
+        "correct": "Project scheduling",
+        "explanation": "Software project scheduling is the process of allocating anticipated effort to specific software developing activities and distributing it across the project’s intended length. A macroscopic schedule is created in the early phases of project planning."
+      },
+      {
+        "question": "Q10: What is a Functional Requirement?",
+        "image": "",
+        "choices": [
+          "specifies the tasks the program must complete",
+          "specifies the tasks the program should not complete",
+          "specifies the tasks the program must not work",
+          "All of the mentioned"
+        ],
+        "correct": "specifies the tasks the program must complete",
+        "explanation": " A functional requirement is a specification that describes a system or one of its components. It specifies the tasks the program must complete. A function is made up of three parts: inputs, behavior, and outputs."
+      }
+    ]
+  }
