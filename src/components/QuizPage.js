@@ -29,7 +29,7 @@ const QuizApp = () => {
           <div className="h-4/6 w-[600px] mx-auto">
 
             {/* // Question no  */}
-            <div className="bg-gray-100 rounded px-4 font-bold text-2xl text-blue-600">
+            <div className="bg-gray-100 rounded p-4 font-bold text-2xl text-blue-600">
               {questions && (
                 <>
                   Question : {currentQuestion + 1} / {questions.mcqs.length}
