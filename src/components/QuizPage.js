@@ -5,14 +5,15 @@ import { Quiz } from "./Homepage";
 const QuizApp = () => {
   const [questions, setQuestions] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
+  const [checkedAnswer, setCheckedAnswer] = useState(new Object());
+  console.log(checkedAnswer);
   // fetch questions using axios
   const fetchQuestions = async () => {
     const questionData = await axios.get(
       "https://cdn.jsdelivr.net/gh/RohtashTalan/quiz-app@master/src/components/data/question.json"
     );
 
-    console.log(questionData.data);
+    // console.log(questionData.data);
     setQuestions(questionData.data);
   };
 
@@ -21,13 +22,31 @@ const QuizApp = () => {
     fetchQuestions();
   }, []);
 
+  const nextClickHandle = () => {
+    let selected = document.querySelector('input[name="choice"]:checked');
+    selected ? (selected = selected.value) : (selected = selected);
+    document.querySelector('input[name="choice"]').checked = false;
+
+    setCheckedAnswer((checkedAnswer) => ({
+      ...checkedAnswer,
+      [`Question-${currentQuestion}`]: {
+        user: selected,
+      },
+    }));
+
+    setCurrentQuestion(
+      currentQuestion === questions.mcqs.length - 1
+        ? currentQuestion
+        : currentQuestion + 1
+    );
+  };
+
   return (
     <>
       <div className="bg-gray-200 h-screen w-full">
         <div className="flex flex-col h-full w-[90%] mx-auto">
           <div className="h-24"></div>
           <div className="h-4/6 w-[600px] mx-auto">
-
             {/* // Question no  */}
             <div className="bg-gray-100 rounded p-4 font-bold text-2xl text-blue-600">
               {questions && (
@@ -41,28 +60,35 @@ const QuizApp = () => {
             <div className="bg-gray-600 rounded text-white h-96">
               {questions && (
                 <>
-                  <div className="p-4 divide-y">
+                  <div className="p-4">
                     <div id={"question-" + currentQuestion}>
                       {questions.mcqs[currentQuestion].question}
                     </div>
                     <ul className=" ml-10 mt-6">
-                      {questions.mcqs[currentQuestion].choices.map((option) => (
-                        <>
-                          <li>
-                            <input
-                              type="radio"
-                              name={"choice-" + currentQuestion}
-                            />
-                            {option}
-                          </li>
-                        </>
-                      ))}
+                      {questions.mcqs[currentQuestion].choices.map(
+                        (option, i) => (
+                          <>
+                            <li
+                              className="p-1 my-6 shadow rounded-lg shadow-gray-300 bg-gray-500 hover:bg-gray-200 hover:text-black hover:cursor-pointer"
+                              onClick={(e) => {
+                                e.target.firstChild.checked = true;
+                              }}
+                            >
+                              <input
+                                type="radio"
+                                name={"choice"}
+                                value={option}
+                              />
+                              <span className="mx-1"> {option}</span>
+                            </li>
+                          </>
+                        )
+                      )}
                     </ul>
                   </div>
                 </>
               )}
             </div>
-
 
             {/* Submit buttons */}
             <div className="flex  justify-between text-white font-semibold py-4 px-2">
@@ -78,13 +104,9 @@ const QuizApp = () => {
                   Previous
                 </button>
                 <button
-                  onClick={() =>
-                    setCurrentQuestion(
-                      currentQuestion === questions.mcqs.length - 1
-                        ? currentQuestion
-                        : currentQuestion + 1
-                    )
-                  }
+                  onClick={() => {
+                    nextClickHandle();
+                  }}
                   className="py-2 px-4 bg-blue-500 rounded-md"
                 >
                   Next
