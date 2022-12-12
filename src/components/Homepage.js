@@ -1,8 +1,9 @@
-import react from 'react';
+import react, { createContext } from 'react';
 import homeimg from './image/homepage.png';
 
-const Homepage = () => {
+let Quiz=createContext('QuizPage');
 
+const Homepage = () => {
 
     return(<>
    <main className='w-full'>
@@ -19,14 +20,14 @@ const Homepage = () => {
             <li> click on submit button to submit quiz</li>
         </ul>
         </div>
-
     </div>
-    < a href="/quiz">
+    <a href="/quiz">
     <button className='bg-blue-600 block mx-auto text-white font-bold text-3xl py-2 px-6 rounded-md w-56'> Start
     </button></a>
    </main>
-
+{console.log(Quiz)}
     </>)
 }
 
 export default Homepage;
+export {Quiz};
