@@ -11,10 +11,6 @@ function App() {
     <Routes>
       <Route path="/" element={<Homepage/>} />
       <Route path='/quiz' element={<QuizApp/>} />
-      <Route path='/result' element={<QuizResult/>} />
-      <Route path='/question' element={<>
-      {JSON.stringify(Questions)}
-      </>} />
     </Routes>
     </BrowserRouter>
   );
