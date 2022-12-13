@@ -36,7 +36,7 @@ for(let index = 0; index < questions.length; index++) {
                     </span>
 
                     {/* full question */}
-                    <h1>{que.question}</h1>
+                    <h1 className="text-2xl font-semibold">{que.question}</h1>
 
                     <ul className=" ml-10 mt-6">
                       <>
@@ -44,7 +44,7 @@ for(let index = 0; index < questions.length; index++) {
                           <>
 
                           {/* checking against user selected and correct answer */}
-                          
+
                             {option === userAnswers[`Question_${i}`] ? (
                               <>
                                 {que.correct ===
@@ -81,7 +81,7 @@ for(let index = 0; index < questions.length; index++) {
                       </>
                     </ul>
                   </div>
-                  <div className="ml-12 mb-4 font-bold">EXPLANATION  : <span className="font-normal mx-4 ">{que.explanation}</span></div>
+                  <div className="mx-10 mb-4 font-bold">EXPLANATION  : <span className="font-normal mx-4 ">{que.explanation}</span></div>
                 </>
               </div>
               
