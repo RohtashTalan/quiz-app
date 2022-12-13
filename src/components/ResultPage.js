@@ -3,19 +3,20 @@ import React, { useState } from "react";
 const QuizResult = ({ ...ans }) => {
   const questions = ans.questions.mcqs;
   const userAnswers = ans.checkedAnswer;
-const [score,setScore] = useState(0);
 
 
+  // count score of user
+let score = 0;
 for(let index = 0; index < questions.length; index++) {
     if(userAnswers[`Question_${index}`] && userAnswers[`Question_${index}`] != null && userAnswers[`Question_${index}`] === questions[index].correct){
-        setScore(2);
+        score++;
     }
 }
 
   return (
     <>
     <div className="text-center p-4 text-2xl uppercase">
-        congratulation your score is : <span className="font-bold text-3xl">{score}</span>/10
+        congratulation your score is : <span className="font-bold text-3xl">{score}</span>/{questions.length}
     </div>
       <div className="h-4/6 w-[600px] mx-auto">
         {questions &&
