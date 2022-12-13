@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Quiz } from "./Homepage";
+import QuizResult from "./ResultPage";
 
 const QuizApp = () => {
   const [questions, setQuestions] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [checkedAnswer, setCheckedAnswer] = useState(new Object());
-  console.log(checkedAnswer);
+  // console.log(checkedAnswer);
   // fetch questions using axios
   const fetchQuestions = async () => {
     const questionData = await axios.get(
@@ -29,9 +29,7 @@ const QuizApp = () => {
 
     setCheckedAnswer((checkedAnswer) => ({
       ...checkedAnswer,
-      [`Question-${currentQuestion}`]: {
-        user: selected,
-      },
+      [`Question_${currentQuestion}`]:selected,
     }));
 
     setCurrentQuestion(
@@ -41,9 +39,18 @@ const QuizApp = () => {
     );
   };
 
+
+const [isSubmit, setIsSubmit] = useState(false);
+
+  const submitClickHandle = () =>{
+     nextClickHandle();
+    document.getElementById('quiz-section').style = 'display:none';
+    setIsSubmit(true);
+  }
+
   return (
     <>
-      <div className="bg-gray-200 h-screen w-full">
+      <div id='quiz-section' className="bg-gray-200 h-screen w-full">
         <div className="flex flex-col h-full w-[90%] mx-auto">
           <div className="h-24"></div>
           <div className="h-4/6 w-[600px] mx-auto">
@@ -69,11 +76,7 @@ const QuizApp = () => {
                         (option, i) => (
                           <>
                             <li
-                              className="p-1 my-6 shadow rounded-lg shadow-gray-300 bg-gray-500 hover:bg-gray-200 hover:text-black hover:cursor-pointer"
-                              onClick={(e) => {
-                                e.target.firstChild.checked = true;
-                              }}
-                            >
+                              className="p-1 my-6 shadow rounded-lg shadow-gray-300 bg-gray-500 hover:bg-gray-200 hover:text-black hover:cursor-pointer" >
                               <input
                                 type="radio"
                                 name={"choice"}
@@ -96,7 +99,7 @@ const QuizApp = () => {
                 <button
                   onClick={() =>
                     setCurrentQuestion(
-                      currentQuestion === 0 ? 0 : currentQuestion - 1
+                      currentQuestion === 0 ? (0): (currentQuestion - 1)
                     )
                   }
                   className="py-2 px-4 bg-blue-500 rounded-md"
@@ -113,13 +116,20 @@ const QuizApp = () => {
                 </button>
               </div>
 
-              <button className="py-2 px-4 bg-orange-500 rounded-md">
+              <button 
+              onClick={() => {
+                submitClickHandle();
+              }}
+              className="py-2 px-4 bg-orange-500 rounded-md">
                 Submit
               </button>
             </div>
           </div>
         </div>
       </div>
+
+        {isSubmit ? (<QuizResult checkedAnswer={checkedAnswer} questions={questions}  />):('')}
+
     </>
   );
 };
