@@ -29,14 +29,22 @@ for(let index = 0; index < questions.length; index++) {
               <div className="bg-gray-600 rounded text-white py-6">
                 <>
                   <div className="p-4">
-                    {que.question}
-                    <div></div>
+
+                    {/* not Attempted sign */}
+                    <span className="text-sm text-yellow-300 ">
+                        {userAnswers[`Question_${i}`] ? (''):('Not Attempted')}
+                    </span>
+
+                    {/* full question */}
+                    <h1>{que.question}</h1>
+
                     <ul className=" ml-10 mt-6">
                       <>
                         {que.choices.map((option) => (
                           <>
-                            {/* // checked or or not */}
 
+                          {/* checking against user selected and correct answer */}
+                          
                             {option === userAnswers[`Question_${i}`] ? (
                               <>
                                 {que.correct ===
@@ -55,7 +63,6 @@ for(let index = 0; index < questions.length; index++) {
                               </>
                             ) : (
                               <>
-                                {" "}
                                 {que.correct === option ? (
                                   <li
                                     className={`p-1 my-6 shadow rounded-lg shadow-green-300 bg-green-500 hover:bg-gray-200 hover:text-black hover:cursor-pointer`}
