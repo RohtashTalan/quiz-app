@@ -82,6 +82,7 @@ const QuizApp = () => {
                                 type="radio"
                                 name={"choice"}
                                 value={option}
+                                checked
                               />
                               <span className="mx-1"> {option}</span>
                             </li>
