@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import axios from "axios";
 import QuizResult from "./ResultPage";
 
@@ -6,14 +6,14 @@ const QuizApp = () => {
   const [questions, setQuestions] = useState();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [checkedAnswer, setCheckedAnswer] = useState(new Object());
-  // console.log(checkedAnswer);
+  const [isSubmit, setIsSubmit] = useState(false);
+  
   // fetch questions using axios
   const fetchQuestions = async () => {
     const questionData = await axios.get(
       "https://cdn.jsdelivr.net/gh/RohtashTalan/quiz-app@master/src/components/data/question.json"
     );
 
-    // console.log(questionData.data);
     setQuestions(questionData.data);
   };
 
@@ -40,11 +40,12 @@ const QuizApp = () => {
   };
 
 
-const [isSubmit, setIsSubmit] = useState(false);
 
+
+// handle submit 
   const submitClickHandle = () =>{
      nextClickHandle();
-    document.getElementById('quiz-section').style = 'display:none';
+    document.getElementById('quiz-section').remove();
     setIsSubmit(true);
   }
 

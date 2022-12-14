@@ -1,12 +1,21 @@
-import react, { createContext } from 'react';
+import react, { useState } from 'react';
+import QuizApp from './QuizPage';
 import homeimg from './image/homepage.png';
 
-let Quiz=createContext('QuizPage');
+
 
 const Homepage = () => {
 
+    const [isStarted, setIsStarted] = useState(false);
+
+    const startClickHandle =() => {
+
+        document.getElementById('start-section').remove();
+        setIsStarted(true);
+    }
+
     return(<>
-   <main className='w-full'>
+   <main className='w-full' id='start-section'>
     <h1 className='text-center text-blue-500 font-bold text-3xl pt-16'>Quiz App</h1>
     
     <div className='flex justify-items-center w-full my-4'>
@@ -21,13 +30,14 @@ const Homepage = () => {
         </ul>
         </div>
     </div>
-    <a href="/quiz">
+    <a onClick={()=>startClickHandle()}>
     <button className='bg-blue-600 block mx-auto text-white font-bold text-3xl py-2 px-6 rounded-md w-56'> Start
     </button></a>
    </main>
-{console.log(Quiz)}
+{
+    isStarted ? (<QuizApp />):('')
+}
     </>)
 }
 
 export default Homepage;
-export {Quiz};

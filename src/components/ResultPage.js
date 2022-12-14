@@ -15,10 +15,11 @@ for(let index = 0; index < questions.length; index++) {
 
   return (
     <>
-    <div className="text-center p-4 text-2xl uppercase">
+
+      <div className="h-4/6 w-[600px] py-12  mx-auto">
+      <div className="text-center p-4 text-2xl uppercase">
         congratulation your score is : <span className="font-bold text-3xl">{score}</span>/{questions.length}
     </div>
-      <div className="h-4/6 w-[600px] mx-auto">
         {questions &&
           questions.map((que, i) => (
             <>
