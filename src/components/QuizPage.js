@@ -57,19 +57,20 @@ const QuizApp = () => {
     <>
       <div id="quiz-section" className="bg-gray-200 h-screen w-full">
         <div className="flex flex-col h-full w-[90%] mx-auto">
-          <div className="h-24"></div>
+          <div className="h-24 mx-auto mt-12 -mb-12 text-3xl font-semibold">{questions &&questions.heading}</div>
           <div className="h-4/6 w-[600px] mx-auto">
             {/* // Question no  */}
-            <div className="bg-gray-100 rounded p-4 font-bold text-2xl text-blue-600">
+            <div className="bg-gray-100 rounded-t p-4 font-bold text-2xl text-blue-600">
               {questions && (
                 <>
+               
                   Question : {currentQuestion + 1} / {questions.mcqs.length}
                 </>
               )}
             </div>
 
             {/* Question and options */}
-            <div className="bg-gray-600 rounded text-white h-96">
+            <div className="bg-gray-600 rounded-b text-white h-96">
               {questions && (
                 <>
                   <div className="p-4">
