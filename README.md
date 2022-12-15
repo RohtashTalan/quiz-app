@@ -12,3 +12,8 @@ This Quiz app developed by me as an internship project at ineuron.ai. Quiz App i
 ![TailwindCss](https://img.shields.io/badge/TailwindCss-orange)
 ![Axios](https://img.shields.io/badge/Axios-gray)
 
+
+
+## Demo video
+![Demo-video](./Demo-Assests/Quiz_App-internship-project.mp4)
+
