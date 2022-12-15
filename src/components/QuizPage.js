@@ -17,7 +17,7 @@ const QuizApp = () => {
     setQuestions(questionData.data);
   };
 
-  // invoke Qustions loading function
+  // invoke Questions loading function
   useEffect(() => {
     fetchQuestions();
   }, []);
