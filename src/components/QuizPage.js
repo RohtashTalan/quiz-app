@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import QuizResult from "./ResultPage";
 
@@ -7,7 +7,7 @@ const QuizApp = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [checkedAnswer, setCheckedAnswer] = useState(new Object());
   const [isSubmit, setIsSubmit] = useState(false);
-  
+
   // fetch questions using axios
   const fetchQuestions = async () => {
     const questionData = await axios.get(
@@ -23,14 +23,21 @@ const QuizApp = () => {
   }, []);
 
   const nextClickHandle = () => {
-    let selected = document.querySelector('input[name="choice"]:checked');
+    let selected = document.querySelector(
+      `input[name="choice_${currentQuestion}"]:checked`
+    );
     selected ? (selected = selected.value) : (selected = selected);
-    document.querySelector(`input[name="choice_${currentQuestion}"]`).checked = false;
 
     setCheckedAnswer((checkedAnswer) => ({
       ...checkedAnswer,
-      [`Question_${currentQuestion}`]:selected,
+      [`Question_${currentQuestion}`]: selected,
     }));
+
+    // set input unchecked if checked
+    let chekd = document.querySelector(
+      `input[name="choice_${currentQuestion}"]:checked`
+    );
+    if (chekd) {chekd.checked = false;}
 
     setCurrentQuestion(
       currentQuestion === questions.mcqs.length - 1
@@ -39,19 +46,16 @@ const QuizApp = () => {
     );
   };
 
-
-
-
-// handle submit 
-  const submitClickHandle = () =>{
-     nextClickHandle();
-    document.getElementById('quiz-section').remove();
+  // handle submit
+  const submitClickHandle = () => {
+    nextClickHandle();
+    document.getElementById("quiz-section").remove();
     setIsSubmit(true);
-  }
+  };
 
   return (
     <>
-      <div id='quiz-section' className="bg-gray-200 h-screen w-full">
+      <div id="quiz-section" className="bg-gray-200 h-screen w-full">
         <div className="flex flex-col h-full w-[90%] mx-auto">
           <div className="h-24"></div>
           <div className="h-4/6 w-[600px] mx-auto">
@@ -72,20 +76,27 @@ const QuizApp = () => {
                     <div id={"question-" + currentQuestion}>
                       {questions.mcqs[currentQuestion].question}
                     </div>
-                    <ul className=" ml-10 mt-6">
+                    <ul className="ml-10 mt-6">
                       {questions.mcqs[currentQuestion].choices.map(
                         (option, i) => (
                           <>
-                            <li
-                              className="p-1 my-6 shadow rounded-lg shadow-gray-300 bg-gray-500 hover:bg-gray-200 hover:text-black hover:cursor-pointer" >
-                              <input
-                                type="radio"
-                                name={`choice_${currentQuestion}`}
-                                value={option}
-                                checked
-                              />
-                              <span className="mx-1"> {option}</span>
-                            </li>
+                            <label
+                              key={i}
+                              htmlFor={`choice_${currentQuestion}_${i}`}
+                            >
+                              <li
+                                key={i}
+                                className="p-1 my-6 shadow rounded-lg shadow-gray-300 bg-gray-500 hover:bg-gray-200 hover:text-black hover:cursor-pointer"
+                              >
+                                <input
+                                  type="radio"
+                                  name={`choice_${currentQuestion}`}
+                                  value={option}
+                                  id={`choice_${currentQuestion}_${i}`}
+                                />
+                                <span className="mx-1"> {option}</span>
+                              </li>
+                            </label>
                           </>
                         )
                       )}
@@ -101,7 +112,7 @@ const QuizApp = () => {
                 <button
                   onClick={() =>
                     setCurrentQuestion(
-                      currentQuestion === 0 ? (0): (currentQuestion - 1)
+                      currentQuestion === 0 ? 0 : currentQuestion - 1
                     )
                   }
                   className="py-2 px-4 bg-blue-500 rounded-md"
@@ -118,11 +129,12 @@ const QuizApp = () => {
                 </button>
               </div>
 
-              <button 
-              onClick={() => {
-                submitClickHandle();
-              }}
-              className="py-2 px-4 bg-orange-500 rounded-md">
+              <button
+                onClick={() => {
+                  submitClickHandle();
+                }}
+                className="py-2 px-4 bg-orange-500 rounded-md"
+              >
                 Submit
               </button>
             </div>
@@ -130,8 +142,11 @@ const QuizApp = () => {
         </div>
       </div>
 
-        {isSubmit ? (<QuizResult checkedAnswer={checkedAnswer} questions={questions}  />):('')}
-
+      {isSubmit ? (
+        <QuizResult checkedAnswer={checkedAnswer} questions={questions} />
+      ) : (
+        ""
+      )}
     </>
   );
 };
