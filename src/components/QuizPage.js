@@ -25,7 +25,7 @@ const QuizApp = () => {
   const nextClickHandle = () => {
     let selected = document.querySelector('input[name="choice"]:checked');
     selected ? (selected = selected.value) : (selected = selected);
-    document.querySelector('input[name="choice"]').checked = false;
+    document.querySelector(`input[name="choice_${currentQuestion}"]`).checked = false;
 
     setCheckedAnswer((checkedAnswer) => ({
       ...checkedAnswer,
@@ -80,7 +80,7 @@ const QuizApp = () => {
                               className="p-1 my-6 shadow rounded-lg shadow-gray-300 bg-gray-500 hover:bg-gray-200 hover:text-black hover:cursor-pointer" >
                               <input
                                 type="radio"
-                                name={"choice"}
+                                name={`choice_${currentQuestion}`}
                                 value={option}
                                 checked
                               />
