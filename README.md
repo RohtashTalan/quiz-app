@@ -15,5 +15,5 @@ This Quiz app developed by me as an internship project at ineuron.ai. Quiz App i
 
 
 ## Demo video
-![Demo-video](./Demo-Assests/Quiz_App-internship-project.mp4)
+![Demo-video](./Demo-Assests/Gif-Quiz_App-internship-project.gif)
 
