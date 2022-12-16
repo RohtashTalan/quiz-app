@@ -17,3 +17,9 @@ This Quiz app developed by me as an internship project at ineuron.ai. Quiz App i
 ## Demo video
 ![Demo-video](./Demo-Assests/Gif-Quiz_App-internship-project.gif)
 
+
+## Steps to Install and run
+ - run following command in your terminal 
+ `git clone https://github.com/RohtashTalan/quiz-app.git` 
+  - run following command to install required dependence ``npm install`` or (`npm i`)
+  - run following command to start app `npm start` 
